@@ -18,8 +18,8 @@ output_file_path = 'matched_tables.txt'
 open(output_file_path, 'w').close()
 
 # 定义正则表达式模式，匹配表名，前后不包含英文逗号、"and"、"when" (忽略大小写) 或 "= "（前有空格）
-pattern = r"\b(?<![Ss][Ee][Ll][Ee][Cc][Tt])(?<![Ww][Hh][Ee][Nn])(?<![Ww][Hh][Ee][Rr][Ee])(?<![Tt][Hh][Ee][Nn])(?<![Ee][Ll][Ss][Ee])(?<![Aa][Nn][Dd])(?<![Bb][Yy])(?<![,])(?<![-])\s((?:[A-Za-z0-9_]+\.){1,2}[A-Za-z0-9_\u4e00-\u9fa5]+)\b(?!\s*=)(?!=)(?!\s*[,])(?!\s[Aa][Nn][Dd])(?!\s[Ee][Nn][Dd])(?!\s[Ff][Rr][Oo][Mm])"
-
+# pattern = r"\b(?<![Ss][Ee][Ll][Ee][Cc][Tt])(?<![Ww][Hh][Ee][Nn])(?<![Ww][Hh][Ee][Rr][Ee])(?<![Tt][Hh][Ee][Nn])(?<![Ee][Ll][Ss][Ee])(?<![Aa][Nn][Dd])(?<![Bb][Yy])(?<![,])(?<![-])\s((?:[A-Za-z0-9_]+\.){1,2}[A-Za-z0-9_\u4e00-\u9fa5]+)\b(?!\s*=)(?!=)(?!\s*[,])(?!\s[Aa][Nn][Dd])(?!\s[Ee][Nn][Dd])(?!\s[Ff][Rr][Oo][Mm])"
+pattern = r"\b(?:FROM|TABLE|INTO|EXISTS|JOIN|UPDATE)\s+(?<![Ss][Ee][Ll][Ee][Cc][Tt])(?<![Ww][Hh][Ee][Nn])(?<![Ww][Hh][Ee][Rr][Ee])(?<![Tt][Hh][Ee][Nn])(?<![Ee][Ll][Ss][Ee])(?<![Aa][Nn][Dd])(?<![Bb][Yy])(?<![,])(?<![-])((?:[A-Za-z0-9_]+\.){1,2}[A-Za-z0-9_\u4e00-\u9fa5]+)\b(?!\s*=)(?!=)(?!\s*[,])(?!\s[Aa][Nn][Dd])(?!\s[Ee][Nn][Dd])(?!\s[Ff][Rr][Oo][Mm])"
 # 用于存储所有匹配结果的集合，以确保唯一性
 all_matches = set()
 
