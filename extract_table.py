@@ -29,19 +29,20 @@ for file_path in target_files:
         with open(file_path, 'r', encoding='utf-8') as file:
             content = file.read()
             print(f'内容读取成功: {file_path}')
-            open(output_file_path, 'a').write(file_path + '\n')
+            # open(output_file_path, 'a').write(file_path + '\n')
 
             # 使用正则表达式查找所有匹配项，并添加到集合中
-            matches = set(re.findall(pattern, content))
+            matches = set(re.findall(pattern, content, re.IGNORECASE))
             all_matches.update(matches)
 
             # print(matches)
             # print(f"匹配条数: {len(matches)}")
 
-            with open(output_file_path, 'a') as file:
-                for match in all_matches:
-                    file.write(match + '\n')
-                    print(f"匹配到的表名: {match}")
+            # 测试代码
+            # with open(output_file_path, 'a') as file:
+            #     for match in matches:
+            #         file.write(match + '\n')
+            #         print(f"匹配到的表名: {match}")
             # print(f"匹配到的表名: {match}", end='')
 
     except Exception as e:
@@ -49,9 +50,9 @@ for file_path in target_files:
         print(e)
 
 # 最终将所有唯一的匹配项写入输出文件
-# with open(output_file_path, 'a') as file:
-#     for match in all_matches:
-#         file.write(match + '\n')
-        # print(f"匹配到的表名: {match}", end='')
+with open(output_file_path, 'a') as file:
+    for match in all_matches:
+        file.write(match + '\n')
+        print(f"匹配到的表名: {match}")
 
 print(f"总共匹配到的唯一表名数量: {len(all_matches)}")
